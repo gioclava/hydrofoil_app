@@ -51,6 +51,18 @@ export default function Page() {
   const [config, setConfig] = useState<Config | null>(null);
 
   useEffect(() => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) =>
+        console.log(
+          "Service Worker registration successful with scope: ",
+          registration.scope,
+        ),
+      )
+      .catch((err) => console.log("Service Worker registration failed: ", err));
+  }, []);
+
+  useEffect(() => {
     fetch(`${STATIC_IP}/config`)
       .then(res => res.json())
       .then(data => setConfig(data))
