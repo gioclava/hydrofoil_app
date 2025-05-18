@@ -17,6 +17,8 @@ const withSerwist = withSerwistInit({
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  basePath: '/hydrofoil_app',
+  assetPrefix: '/hydrofoil_app',
 };
 
 export default withSerwist(nextConfig);
